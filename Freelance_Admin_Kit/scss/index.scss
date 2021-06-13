@@ -1,0 +1,265 @@
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+@import 'utilities';
+
+$colorvars: ($color-var-1,
+            $color-var-2,
+            $color-var-3,
+            $color-var-4,
+            $color-var-5,
+            $color-var-6,
+            $color-var-7,
+            $color-var-8,
+            $color-var-9);
+
+$count: 0;
+
+@each $vars in $colorvars{
+
+    $count: $count + 1;
+
+    .sidebar-#{$count}{
+
+        top: 0;
+        position: fixed;
+        left: -280px;
+        width: 280px;
+        height: 100%;
+        transition: all .5s ease;
+        
+        overflow: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        z-index: 10;
+
+        #cancel{
+
+            font-size: 20px;
+            display: flex;
+            margin: 30px;
+        }
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        
+        header{
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            img{
+                width: 60%;
+            }
+        }
+
+        ul{
+
+            a{
+                display: block;
+                height: 100%;
+                width: 100%;
+                line-height: 65px;
+                font-size: $font-size;
+                padding-left: 40px;
+                box-sizing: border-box;
+                border-top: 1px solid rgba(255, 255, 255, .1);
+                transition: $trans-fast;
+            }
+
+            li{
+                display: flex;
+
+                a{
+
+                    color: inherit;
+                    text-decoration: none;
+                }
+
+                .sb-btn{
+                    padding: 10px;
+                    text-align: center;
+                    width: 40px;
+                }
+            }
+
+            li:hover a{
+
+                @include set-background($vars);
+                padding-left: 50px;
+                
+            }
+
+            i{
+                margin-right: 16px;
+            }
+
+        }
+
+        .sidebar-i-#{$count}{
+
+            display: none; 
+            border-left: 7px solid $vars;
+
+        }
+    }
+
+    #check{
+
+        display: none;
+    
+        &:checked ~ .sidebar-#{$count}{
+    
+            left: 0;
+        }
+    
+        &:checked ~ .label-sb #btn1{
+    
+            left: 250px;
+            opacity: 0;
+            pointer-events: none;
+        }
+    
+        &:checked ~ .label-sb #cancel{
+    
+            left: 195px;
+        }
+    }
+
+    .al3-navbar-#{$count}{
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+        width: 100%;
+
+        background: transparent;
+    
+        .right-col{
+    
+            display: flex;
+            align-items: center;
+        }
+        
+        .left-col{
+    
+            display: flex;
+            align-items: center;
+    
+        }
+    
+        .al3-nav-item{  
+            font-size: 20px;
+            padding: 20px;
+            border-bottom: 3px solid #f4f4f4;
+            margin: 10px;
+
+            transition: $trans-fast;
+    
+            &:hover{
+    
+                border-bottom: 3px solid $vars;
+            }
+        }
+
+        .al3-nav-item-dark{  
+            font-size: 20px;
+            padding: 20px;
+            border-bottom: 3px solid #3d3d3d;
+            margin: 10px;
+
+            transition: $trans-fast;
+    
+            &:hover{
+    
+                border-bottom: 3px solid $vars;
+            }
+        }
+    
+        .search-bar{
+    
+            margin: 20px;
+            width: 100%;
+    
+            .form-control-1{
+    
+                width: 100%;
+                padding: 10px;
+            }
+    
+        }
+    }
+
+    .al3-navbar-alt-#{$count}{
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+        width: 100%;
+
+        background: $vars;
+    
+        .right-col{
+    
+            display: flex;
+            align-items: center;
+        }
+        
+        .left-col{
+    
+            display: flex;
+            align-items: center;
+    
+        }
+    
+        .al3-nav-alt-item{  
+            font-size: 20px;
+            padding: 20px;
+            margin: 10px;
+
+            transition: $trans-fast;
+            color: #fff;
+    
+            &:hover{
+    
+                background: #f4f4f4;
+                color: #000;
+            }
+        }
+
+        .al3-nav-alt-item-dark{  
+            font-size: 20px;
+            padding: 20px;
+            margin: 10px;
+
+            transition: $trans-fast;
+    
+            &:hover{
+    
+                background: #3d3d3d;
+                color: #fff;
+            }
+        }
+    
+        // .search-bar{
+    
+        //     margin: 20px;
+        //     width: 100%;
+    
+        //     .form-control-1{
+    
+        //         width: 100%;
+        //         padding: 10px;
+        //     }
+    
+        // }
+    }
+
+}
+
